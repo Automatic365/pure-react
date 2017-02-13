@@ -4,15 +4,23 @@ import App from './App';
 import './index.css';
 
 var Greeting = React.createClass({
-  var username = 
+  getUsername: function(name){
+    if(name){
+      return "Hello" + " " + name + "!"
+    } else {
+      return "Not logged in"
+    }
+  },
   render: function(){
     return(
-
+      <div>
+         {this.getUsername(false)}
+      </div>
     )
   }
 })
 
 ReactDOM.render(
-  <App />,
+  <Greeting />,
   document.getElementById('root')
 );
