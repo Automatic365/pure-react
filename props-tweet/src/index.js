@@ -12,12 +12,12 @@ var Tweet = React.createClass({
         <div className="content">
           <NameWithHandle author={tweet.author}/><Time time={tweet.timestamp}/>
           <Message text={tweet.message}/>
-        <div className='buttons'>
-          <ReplyButton />
-          <RetweetButton count={tweet.retweets}/>
-          <LikeButton count={tweet.likes}/>
-          <MoreOptionsButton />
-        </div>
+          <div className='buttons'>
+            <ReplyButton />
+            <RetweetButton count={tweet.retweets}/>
+            <LikeButton count={tweet.likes}/>
+            <MoreOptionsButton />
+          </div>
         </div>
       </div>
     )
@@ -51,9 +51,9 @@ var RetweetButton = React.createClass({
   render: function(){
     return(
       <span className='retweet-count'>
-      <i className='fa fa-retweet retweet-button' />
-      {this.getCount()}
-    </span>
+        <i className='fa fa-retweet retweet-button' />
+        {this.getCount()}
+      </span>
     )
   }
 })
@@ -77,8 +77,17 @@ var MoreOptionsButton = React.createClass({
 
 var LikeButton = React.createClass({
   render: function(){
+    var {count} = this.props
     return(
-      <i className='fa fa-heart like-button'/>
+      <span className='like-button'>
+        <i className='fa fa-heart like-button'/>
+        {count > 0 ?
+          <span className='like-count'>
+            {count}
+          </span>
+          : null
+        }
+      </span>
     )
   }
 })
