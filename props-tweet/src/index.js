@@ -14,8 +14,8 @@ var Tweet = React.createClass({
           <Message text={tweet.message}/>
         <div className='buttons'>
           <ReplyButton />
-          <RetweetButton />
-          <LikeButton />
+          <RetweetButton count={tweet.retweets}/>
+          <LikeButton count={tweet.likes}/>
           <MoreOptionsButton />
         </div>
         </div>
@@ -39,9 +39,21 @@ var Time = React.createClass({
 })
 
 var RetweetButton = React.createClass({
+  getCount: function(){
+    if (this.props.count > 0){
+      return <span className='retweet-count'>
+        {this.props.count}
+      </span>
+    } else {
+      return null
+    }
+  },
   render: function(){
     return(
+      <span className='retweet-count'>
       <i className='fa fa-retweet retweet-button' />
+      {this.getCount()}
+    </span>
     )
   }
 })
@@ -118,7 +130,7 @@ var testTweet = {
     name: 'IAMA catperson'
   },
   likes: 2,
-  retweets: 0,
+  retweets: 5,
   timestamp: '2017-01-30 21:24:37'
 };
 
