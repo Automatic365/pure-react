@@ -5,12 +5,13 @@ import moment from 'moment'
 
 var Tweet = React.createClass({
   render: function(){
+    var {tweet} = this.props
     return(
       <div className="tweet">
-        <Avatar hash={this.props.tweet.gravatar}/>
+        <Avatar hash={tweet.gravatar}/>
         <div className="content">
-          <NameWithHandle author={this.props.tweet.author}/><Time time={this.props.tweet.timestamp}/>
-          <Message text={this.props.tweet.message}/>
+          <NameWithHandle author={tweet.author}/><Time time={tweet.timestamp}/>
+          <Message text={tweet.message}/>
         <div className='buttons'>
           <ReplyButton />
           <RetweetButton />
@@ -118,7 +119,7 @@ var testTweet = {
   },
   likes: 2,
   retweets: 0,
-  timestamp: '2016-07-30 21:24:37'
+  timestamp: '2017-01-30 21:24:37'
 };
 
 
