@@ -50,8 +50,8 @@ var RetweetButton = React.createClass({
   },
   render: function(){
     return(
-      <span className='retweet-count'>
-        <i className='fa fa-retweet retweet-button' />
+      <span className='retweet-button'>
+        <i className='fa fa-retweet' />
         {this.getCount()}
       </span>
     )
@@ -80,7 +80,7 @@ var LikeButton = React.createClass({
     var {count} = this.props
     return(
       <span className='like-button'>
-        <i className='fa fa-heart like-button'/>
+        <i className='fa fa-heart'/>
         {count > 0 ?
           <span className='like-count'>
             {count}
