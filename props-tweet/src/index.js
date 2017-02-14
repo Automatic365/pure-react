@@ -8,8 +8,8 @@ var Tweet = React.createClass({
       <div className="tweet">
         <Avatar hash={this.props.tweet.gravatar}/>
         <div className="content">
-          <NameWithHandle /><Time />
-          <Message />
+          <NameWithHandle author={this.props.tweet.author}/><Time time={this.props.tweet.timestamp}/>
+          <Message text={this.props.tweet.message}/>
         <div className='buttons'>
           <ReplyButton />
           <RetweetButton />
@@ -26,7 +26,7 @@ var Time = React.createClass({
   render: function(){
     return(
       <span className='time'>
-        3h ago
+        {this.props.time}
       </span>
     )
   }
@@ -82,7 +82,7 @@ var Message = React.createClass({
   render: function(){
     return (
       <div>
-        This message is less than 140 characters
+        {this.props.text}
       </div>
     )
   }
@@ -93,10 +93,10 @@ var NameWithHandle = React.createClass({
     return(
       <span className="name-with-handle">
         <span className='name'>
-          Your Name
+          {this.props.author.name}
         </span>
         <span className="handle">
-          @yourhandle
+          {this.props.author.handle}
         </span>
       </span>
     )
@@ -107,7 +107,7 @@ var testTweet = {
   message: 'Something about cats',
   gravatar: '94d72f2e212427535c273f76aa39b3c1',
   author:{
-    handle: 'catperson',
+    handle: '@catperson',
     name: 'IAMA catperson'
   },
   likes: 2,
