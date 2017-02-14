@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
+import moment from 'moment'
 
 var Tweet = React.createClass({
   render: function(){
@@ -23,10 +24,14 @@ var Tweet = React.createClass({
 })
 
 var Time = React.createClass({
+  computeTimeString: function(){
+    return moment(this.props.time).fromNow();
+  },
+
   render: function(){
     return(
       <span className='time'>
-        {this.props.time}
+        {this.computeTimeString()}
       </span>
     )
   }
@@ -90,13 +95,14 @@ var Message = React.createClass({
 
 var NameWithHandle = React.createClass({
   render: function(){
+    var { name, handle} = this.props.author
     return(
       <span className="name-with-handle">
         <span className='name'>
-          {this.props.author.name}
+          {name}
         </span>
         <span className="handle">
-          {this.props.author.handle}
+          @{handle}
         </span>
       </span>
     )
@@ -107,7 +113,7 @@ var testTweet = {
   message: 'Something about cats',
   gravatar: '94d72f2e212427535c273f76aa39b3c1',
   author:{
-    handle: '@catperson',
+    handle: 'catperson',
     name: 'IAMA catperson'
   },
   likes: 2,
