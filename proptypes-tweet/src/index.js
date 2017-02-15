@@ -4,7 +4,7 @@ import './index.css';
 import moment from 'moment'
 
 var Tweet = React.createClass({
-  propTypes{
+  propTypes: {
     tweet: React.PropTypes.shape({
       message: React.PropTypes.string.isRequired,
       gravatar: React.PropTypes.string.isRequired,
@@ -121,7 +121,7 @@ var LikeButton = React.createClass({
 var Avatar = React.createClass({
   propTypes: {
     hash: React.PropTypes.string
-  }
+  },
   render: function(){
     var hash = this.props.hash;
     var url = `https://www.gravatar.com/avatar/${hash}`;
