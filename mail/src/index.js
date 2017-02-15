@@ -6,10 +6,16 @@ import './index.css';
 var Envelope = React.createClass({
   render: function(){
     return(
-      <div>
-        <AddressLabel person={{name: "John Smith",
-           streetAddress: "123 BoogieWoogie Ave",
-            cityState: "Los Angeles, CA 90210"}} />
+      <div className="envelope">
+        <div className="to-label">
+          <AddressLabel person={this.props.toPerson} />
+          <div className="stamp"> 
+            <Stamp />
+          </div>
+        </div>
+        <div className="from-label">
+          <AddressLabel person={this.props.fromPerson} />
+        </div>
       </div>
     )
   }
@@ -28,7 +34,29 @@ var AddressLabel = React.createClass({
   }
 })
 
+var Stamp = React.createClass({
+  render: function(){
+    return(
+      <div>
+        STAMP
+      </div>
+    )
+  }
+})
+
+var toPerson = {
+  name: "Kristaps Porzingis",
+  streetAddress: "Madison Square Garden",
+  cityState: 'New York, NY 11374'
+}
+
+var fromPerson = {
+  name: "Carmelo Anthony",
+  streetAddress: "NY VIA DENVER",
+  cityState: 'New York, NY 11374'
+}
+
 ReactDOM.render(
-  <Envelope />,
+  <Envelope toPerson={toPerson} fromPerson={fromPerson}/>,
   document.getElementById('root')
 );
