@@ -20,6 +20,6 @@ var Greeting = React.createClass({
 })
 
 ReactDOM.render(
-  <Greeting />,
+   <Greeting />,
   document.getElementById('root')
 );
